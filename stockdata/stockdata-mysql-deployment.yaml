@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockdata-mysql-deployment
+  namespace: stockdata-namespace
+  labels:
+    app: stockdata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stockdata
+  template:
+    metadata:
+      labels:
+        app: stockdata
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                 secretKeyRef:
+                    name: stockdata-mysql-secret
+                    key: MYSQL_ROOT_PASSWORD
+          image: mysql
+          name: stockdata-datastore
+          ports:
+            - containerPort: 3306
+
+  
+

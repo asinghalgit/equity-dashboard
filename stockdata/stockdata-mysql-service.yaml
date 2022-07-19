@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockdata-mysql-service
+  namespace: stockdata-namespace
+  labels:
+    app: stockdata
+spec:
+  selector:
+      app: stockdata
+  ports:
+    - port: 3306
+      targetPort: 3306

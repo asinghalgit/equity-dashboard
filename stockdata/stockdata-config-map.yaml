@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stockdata-config-map
+  namespace: stockdata-namespace
+  labels:
+    app: stockdata
+data:
+  database-name: stock_data
